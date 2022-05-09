@@ -6,46 +6,36 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-type para struct {
+type InputData struct {
 	one []int
 	two int
 }
 
-type ans struct {
-	one []int
+type OutputData struct {
+	result []int
 }
 
-type question struct {
-	p para
-	a ans
+type TestCase struct {
+	in  InputData
+	out OutputData
 }
 
 func Test_OK(t *testing.T) {
 	ast := assert.New(t)
 
-	qs := []question{
-		question{
-			p: para{
-				one: []int{3, 2, 4},
-				two: 6,
-			},
-			a: ans{
-				one: []int{1, 2},
-			},
+	testCase := []TestCase{
+		{
+			InputData{[]int{3, 2, 4}, 6},
+			OutputData{[]int{1, 2}},
 		},
-		question{
-			p: para{
-				one: []int{3, 2, 4},
-				two: 8,
-			},
-			a: ans{
-				one: nil,
-			},
+		{
+			InputData{[]int{3, 2, 4}, 8},
+			OutputData{nil},
 		},
 	}
 
-	for _, q := range qs {
-		a, p := q.a, q.p
-		ast.Equal(a.one, twoSum(p.one, p.two), "Enter:%v", p)
+	for _, q := range testCase {
+		out, in := q.out, q.in
+		ast.Equal(out.result, twoSum(in.one, in.two), "Enter:%v", in)
 	}
 }
