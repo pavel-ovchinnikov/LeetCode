@@ -15,7 +15,7 @@ type OutputData struct {
 	result int
 }
 
-type TastCase struct {
+type TestCase struct {
 	in  InputData
 	out OutputData
 }
@@ -23,7 +23,7 @@ type TastCase struct {
 func Test_OK(t *testing.T) {
 	ast := assert.New(t)
 
-	qs := []TastCase{
+	qs := []TestCase{
 		{
 			InputData{[]int{1, 3, 5, 6}, 5},
 			OutputData{2},
