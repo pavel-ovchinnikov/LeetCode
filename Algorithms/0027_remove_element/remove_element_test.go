@@ -15,7 +15,7 @@ type outputData struct {
 	result int
 }
 
-type tastcase struct {
+type TestCase struct {
 	in  inputData
 	out outputData
 }
@@ -23,7 +23,7 @@ type tastcase struct {
 func Test_OK(t *testing.T) {
 	ast := assert.New(t)
 
-	qs := []tastcase{
+	testcase := []TestCase{
 		{
 			inputData{[]int{1, 1, 2}, 2},
 			outputData{2},
@@ -34,7 +34,7 @@ func Test_OK(t *testing.T) {
 		},
 	}
 
-	for _, q := range qs {
+	for _, q := range testcase {
 		in, out := q.in, q.out
 		ast.Equal(out.result, removeElement(in.nums, in.val), "Input data:%v", in)
 	}
