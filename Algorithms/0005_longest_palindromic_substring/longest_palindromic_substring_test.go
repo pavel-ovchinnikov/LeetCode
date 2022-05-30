@@ -31,6 +31,10 @@ func Test_OK(t *testing.T) {
 			InputData{"cbbd"},
 			OutputData{"bb"},
 		},
+		{
+			InputData{"abb"},
+			OutputData{"bb"},
+		},
 	}
 
 	for _, test := range testCase {
