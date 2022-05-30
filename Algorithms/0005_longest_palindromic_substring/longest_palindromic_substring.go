@@ -16,10 +16,7 @@ func longestPalindrome(s string) string {
 			right++
 		}
 
-		for left >= 0 && right < len(s) {
-			if s[left] != s[right] {
-				break
-			}
+		for left >= 0 && right < len(s) && s[left] == s[right] {
 			left--
 			right++
 		}
@@ -28,10 +25,6 @@ func longestPalindrome(s string) string {
 		if end-begin < right-left {
 			end = right
 			begin = left
-
-			if (end - begin) >= len(s)/2 {
-				break
-			}
 		}
 	}
 
